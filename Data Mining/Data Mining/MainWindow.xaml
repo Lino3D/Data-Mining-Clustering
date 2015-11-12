@@ -45,7 +45,7 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <TabControl Grid.Column="1"  Margin="10,10,0,0" >
-            <TabItem Header="TabItem">
+            <TabItem Header="Document">
                 <Grid Background="#FFE5E5E5">
                     <Grid.RowDefinitions>
 
@@ -56,7 +56,7 @@
                                 Canvas.Top="50" Canvas.Left="5"/>
                 </Grid>
             </TabItem>
-            <TabItem Header="TabItem">
+            <TabItem Header="Visual">
                 <Grid Background="#FFE5E5E5"/>
             </TabItem>
         </TabControl>

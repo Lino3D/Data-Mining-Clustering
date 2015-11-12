@@ -14,6 +14,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using MahApps.Metro.Controls;
 using System.IO;
+using Data_Mining.Classes;
+using Data_Mining.Functions;
 
 namespace Data_Mining
 {
@@ -21,11 +23,11 @@ namespace Data_Mining
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : MetroWindow
-
     {
+        List<Cluster> Clusters;
         public MainWindow()
         {
-            //hello 
+            
             InitializeComponent();
         }
 
@@ -45,6 +47,10 @@ namespace Data_Mining
                 string filename = dlg.FileName;
                 Paragraph paragraph = new Paragraph();
                 paragraph.Inlines.Add(System.IO.File.ReadAllText(filename));
+                string documenttext = System.IO.File.ReadAllText(filename);
+
+                Clusters = Algorithm.InitializeClusters(documenttext);
+
                 FlowDocument document = new FlowDocument(paragraph);
                 FlowDocReader.Document = document;
             } 
