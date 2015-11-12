@@ -27,7 +27,7 @@ namespace Data_Mining
         List<Cluster> Clusters;
         public MainWindow()
         {
-            
+      //      MessageBox.Show(Algorithm.CalculateLevenshtein("Sam", "Samantha").ToString());
             InitializeComponent();
         }
 
@@ -50,7 +50,8 @@ namespace Data_Mining
                 string documenttext = System.IO.File.ReadAllText(filename);
 
                 Clusters = Algorithm.InitializeClusters(documenttext);
-
+                while(Clusters.Count != 1)
+                    Clusters = Algorithm.Cluster(Clusters);
                 FlowDocument document = new FlowDocument(paragraph);
                 FlowDocReader.Document = document;
             } 

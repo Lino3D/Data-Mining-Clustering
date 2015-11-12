@@ -8,12 +8,12 @@ namespace Data_Mining.Classes
 {
   public  class Cluster
     {
-        private int ID { get; set; }
+        public int ID { get; set; }
         private int size
         { get; set; }
         public  List<string> Contents;
 
-
+      //hello
         public Cluster(int id, int p, List<string> tmp)
         {
             // TODO: Complete member initialization
@@ -21,7 +21,5 @@ namespace Data_Mining.Classes
             this.size = p;
             this.Contents = tmp;
         }
-
-        
     }
 }
