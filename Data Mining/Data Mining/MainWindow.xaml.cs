@@ -25,6 +25,7 @@ namespace Data_Mining
     {
         public MainWindow()
         {
+            //hello 
             InitializeComponent();
         }
 
