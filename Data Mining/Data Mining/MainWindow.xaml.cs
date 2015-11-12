@@ -23,6 +23,7 @@ namespace Data_Mining
     public partial class MainWindow : MetroWindow
 
     {
+        int dupa;
         public MainWindow()
         {
             InitializeComponent();
