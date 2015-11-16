@@ -48,12 +48,21 @@ namespace Data_Mining
                 Paragraph paragraph = new Paragraph();
                 paragraph.Inlines.Add(System.IO.File.ReadAllText(filename));
                 string documenttext = System.IO.File.ReadAllText(filename);
+                FlowDocument document = new FlowDocument(paragraph);
+                FlowDocReader.Document = document;
+
 
                 Clusters = Algorithm.InitializeClusters(documenttext);
                 while(Clusters.Count != 1)
                     Clusters = Algorithm.Cluster(Clusters);
-                FlowDocument document = new FlowDocument(paragraph);
-                FlowDocReader.Document = document;
+               
+                Paragraph paragraph2 = new Paragraph();
+                for( int i = 0; i < Clusters.First().Contents.Count; i++)
+                paragraph2.Inlines.Add(Clusters.First().Contents[i] + '\n');
+                FlowDocument document2 = new FlowDocument(paragraph2);
+                ClusteredFlowDoc.Document = document2;
+               
+           
             } 
         }
     }

@@ -56,8 +56,16 @@
                                 Canvas.Top="50" Canvas.Left="5"/>
                 </Grid>
             </TabItem>
-            <TabItem Header="Visual">
-                <Grid Background="#FFE5E5E5"/>
+            <TabItem Header="Clustered">
+                <Grid Background="#FFE5E5E5">
+                    <Grid.RowDefinitions>
+
+                    </Grid.RowDefinitions>
+
+                    <FlowDocumentReader Name="ClusteredFlowDoc" Background="LightBlue" ViewingMode="Scroll" IsFindEnabled="False" 
+                                         IsTwoPageViewEnabled="False" 
+                                Canvas.Top="50" Canvas.Left="5"/>
+                </Grid>
             </TabItem>
         </TabControl>
 

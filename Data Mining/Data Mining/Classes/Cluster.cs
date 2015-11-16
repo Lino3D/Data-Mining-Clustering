@@ -11,7 +11,7 @@ namespace Data_Mining.Classes
         public int ID { get; set; }
         private int size
         { get; set; }
-        public  List<string> Contents;
+        public List<string> Contents;
 
       //hello
         public Cluster(int id, int p, List<string> tmp)
@@ -20,6 +20,11 @@ namespace Data_Mining.Classes
             this.ID = id;
             this.size = p;
             this.Contents = tmp;
+        }
+        public string GetContents(int i)
+        {
+            string tmp = Contents[i];
+            return tmp;
         }
     }
 }
