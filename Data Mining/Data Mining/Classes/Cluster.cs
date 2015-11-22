@@ -12,6 +12,9 @@ namespace Data_Mining.Classes
         private int size
         { get; set; }
         public List<string> Contents;
+        public int[] Vector;
+        public double mean;
+        public string Centroid;
 
       //hello
         public Cluster(int id, int p, List<string> tmp)
@@ -28,5 +31,34 @@ namespace Data_Mining.Classes
         }
       public int GetSize()
         { return size; }
+
+      public void CalculateVectorSpace()
+      {
+          this.DeleteRepeations();
+          Vector = new int[Contents.Count()];
+          int i = 0;
+          foreach( var item in Contents)
+          {
+                  Vector[i] = item.Count();
+                  i++;
+          }
+      }
+
+      public void DeleteRepeations()
+      {
+          List<string> NewList = new List<string>();
+
+          foreach( var item in Contents)
+          {
+              if( !NewList.Contains(item))
+              {
+                  NewList.Add(item);
+              }
+          }
+          Contents.Clear();
+          Contents = NewList;
+      }
+
     }
+     
 }

@@ -17,3 +17,22 @@ C:\Users\Lino\Desktop\Data Mining\Data Mining\Data Mining\obj\Debug\Data Mining.
 C:\Users\Lino\Desktop\Data Mining\Data Mining\Data Mining\obj\Debug\Data Mining.exe
 C:\Users\Lino\Desktop\Data Mining\Data Mining\Data Mining\obj\Debug\Data Mining.pdb
 C:\Users\Lino\Desktop\Data Mining\Data Mining\Data Mining\obj\Debug\Data Mining.csprojResolveAssemblyReference.cache
+C:\Users\Michał\Desktop\DMProject\Data Mining\Data Mining\bin\Debug\Data Mining.exe.config
+C:\Users\Michał\Desktop\DMProject\Data Mining\Data Mining\obj\Debug\Data Mining.exe
+C:\Users\Michał\Desktop\DMProject\Data Mining\Data Mining\obj\Debug\Data Mining.pdb
+C:\Users\Michał\Desktop\DMProject\Data Mining\Data Mining\bin\Debug\Data Mining.exe
+C:\Users\Michał\Desktop\DMProject\Data Mining\Data Mining\bin\Debug\Data Mining.pdb
+C:\Users\Michał\Desktop\DMProject\Data Mining\Data Mining\bin\Debug\MahApps.Metro.dll
+C:\Users\Michał\Desktop\DMProject\Data Mining\Data Mining\bin\Debug\System.Windows.Interactivity.dll
+C:\Users\Michał\Desktop\DMProject\Data Mining\Data Mining\bin\Debug\MahApps.Metro.xml
+C:\Users\Michał\Desktop\DMProject\Data Mining\Data Mining\obj\Debug\Data Mining.csprojResolveAssemblyReference.cache
+C:\Users\Michał\Desktop\DMProject\Data Mining\Data Mining\obj\Debug\MainWindow.baml
+C:\Users\Michał\Desktop\DMProject\Data Mining\Data Mining\obj\Debug\Resources\Icons.baml
+C:\Users\Michał\Desktop\DMProject\Data Mining\Data Mining\obj\Debug\App.baml
+C:\Users\Michał\Desktop\DMProject\Data Mining\Data Mining\obj\Debug\MainWindow.g.cs
+C:\Users\Michał\Desktop\DMProject\Data Mining\Data Mining\obj\Debug\Resources\Icons.g.cs
+C:\Users\Michał\Desktop\DMProject\Data Mining\Data Mining\obj\Debug\App.g.cs
+C:\Users\Michał\Desktop\DMProject\Data Mining\Data Mining\obj\Debug\Data Mining_MarkupCompile.cache
+C:\Users\Michał\Desktop\DMProject\Data Mining\Data Mining\obj\Debug\Data Mining.g.resources
+C:\Users\Michał\Desktop\DMProject\Data Mining\Data Mining\obj\Debug\Data_Mining.Properties.Resources.resources
+C:\Users\Michał\Desktop\DMProject\Data Mining\Data Mining\obj\Debug\Data Mining.csproj.GenerateResource.Cache
