@@ -12,7 +12,6 @@ namespace Data_Mining.Classes
         private int size
         { get; set; }
         public List<string> Contents;
-
       //hello
         public Cluster(int id, int p, List<string> tmp)
         {

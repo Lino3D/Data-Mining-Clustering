@@ -86,15 +86,14 @@ namespace Data_Mining.Functions
                int index = r.Next(1, C.GetSize());
                string seed = C.Contents[index];
                 int mean=0;
-
+                string centroid;
                for(int i=0; i< C.Contents.Count-1; i++)
                {
                    mean += CalculateLevenshtein(C.Contents[i], C.Contents[i + 1]);
                }
                mean = (mean / C.GetSize());
 
-
-               int a = 0;
+                        int a = 0;
 
            }
            return Clusters;
