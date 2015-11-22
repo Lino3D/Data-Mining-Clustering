@@ -32,30 +32,38 @@ namespace Data_Mining.Functions
 
         }
 
-       public static List<Cluster> Cluster(List<Cluster> Clusters)
+       public static List<Cluster> Cluster(List<Cluster> Clusters, int Constant)
         {
-           int distance;
-           for (int i = 0; i < Clusters.Count; i++)
+      
+           int distance=0;
+           while(Clusters.Count!=1)
            {
-               int MinLength = Int32.MaxValue;
-               int MinCluster = 0;
-               string str1 = Clusters[i].Contents.First();
-
-               for (int j = 0; j < Clusters.Count; j++)
+               for (int i = 0; i < Clusters.Count; i++)
                {
-                   if ( i != j )
-                   {
-                       distance = CalculateLevenshtein(Clusters[j].Contents.First(), str1);
-                       if (distance < MinLength)
-                       {
-                           MinLength = distance;
-                           MinCluster = j;
-                       }
+                   int MinLength = Int32.MaxValue;
+                   int MinCluster = 0;
+                   string str1 = Clusters[i].Contents.First();
 
+                   for (int j = 0; j < Clusters.Count; j++)
+                   {
+                       if (i != j)
+                       {
+                           distance = CalculateLevenshtein(Clusters[j].Contents.First(), str1);
+                           if (distance < MinLength)
+                           {
+                               MinLength = distance;
+                               MinCluster = j;
+                           }
+                          
+
+                       }
                    }
+                   Clusters[i] = MergeClusters(Clusters[i], Clusters[MinCluster]);
+                   Clusters.RemoveAt(MinCluster);
+                   //jesli najmniejszy znaleziony dystans miedzy clusterami jest wiekszy niz nasz constant, to przerywamy liczenie.
+                   if (MinLength > Constant)
+                       return Clusters;
                }
-               Clusters[i] = MergeClusters(Clusters[i], Clusters[MinCluster]);
-               Clusters.RemoveAt(MinCluster);
            }
 
            //Calculate Centroids
@@ -67,6 +75,32 @@ namespace Data_Mining.Functions
                 c1.Contents.Add( t );
            return c1;
        }
+
+       //cholera to jest zle nie chce mi sie
+       public static List<Cluster> Kmeans (List<Cluster> Clusters)
+       {
+           Random r = new Random();
+           foreach(Cluster C in Clusters)
+           {
+               
+               int index = r.Next(1, C.GetSize());
+               string seed = C.Contents[index];
+                int mean=0;
+
+               for(int i=0; i< C.Contents.Count-1; i++)
+               {
+                   mean += CalculateLevenshtein(C.Contents[i], C.Contents[i + 1]);
+               }
+               mean = (mean / C.GetSize());
+
+
+               int a = 0;
+
+           }
+           return Clusters;
+       }
+
+
        public static int CalculateLevenshtein(string a, string b)
         {
             int n = a.Length;

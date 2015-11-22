@@ -26,5 +26,7 @@ namespace Data_Mining.Classes
             string tmp = Contents[i];
             return tmp;
         }
+      public int GetSize()
+        { return size; }
     }
 }

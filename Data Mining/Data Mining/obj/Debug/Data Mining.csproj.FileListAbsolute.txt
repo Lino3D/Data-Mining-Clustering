@@ -4,7 +4,6 @@ C:\Users\Lino\Desktop\Data Mining\Data Mining\Data Mining\bin\Debug\Data Mining.
 C:\Users\Lino\Desktop\Data Mining\Data Mining\Data Mining\bin\Debug\MahApps.Metro.dll
 C:\Users\Lino\Desktop\Data Mining\Data Mining\Data Mining\bin\Debug\System.Windows.Interactivity.dll
 C:\Users\Lino\Desktop\Data Mining\Data Mining\Data Mining\bin\Debug\MahApps.Metro.xml
-C:\Users\Lino\Desktop\Data Mining\Data Mining\Data Mining\obj\Debug\Data Mining.csprojResolveAssemblyReference.cache
 C:\Users\Lino\Desktop\Data Mining\Data Mining\Data Mining\obj\Debug\MainWindow.baml
 C:\Users\Lino\Desktop\Data Mining\Data Mining\Data Mining\obj\Debug\Resources\Icons.baml
 C:\Users\Lino\Desktop\Data Mining\Data Mining\Data Mining\obj\Debug\App.baml
@@ -17,3 +16,4 @@ C:\Users\Lino\Desktop\Data Mining\Data Mining\Data Mining\obj\Debug\Data_Mining.
 C:\Users\Lino\Desktop\Data Mining\Data Mining\Data Mining\obj\Debug\Data Mining.csproj.GenerateResource.Cache
 C:\Users\Lino\Desktop\Data Mining\Data Mining\Data Mining\obj\Debug\Data Mining.exe
 C:\Users\Lino\Desktop\Data Mining\Data Mining\Data Mining\obj\Debug\Data Mining.pdb
+C:\Users\Lino\Desktop\Data Mining\Data Mining\Data Mining\obj\Debug\Data Mining.csprojResolveAssemblyReference.cache

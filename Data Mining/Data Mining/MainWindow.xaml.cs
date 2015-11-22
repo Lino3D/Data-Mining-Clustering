@@ -61,20 +61,27 @@ namespace Data_Mining
         {
             int MaxDistance;
        
-           bool result = Int32.TryParse(MaxDistanceTextBox.Text, out MaxDistance);
+           bool result = Int32.TryParse(MinDistanceTextBox.Text, out MaxDistance);
 
            if (result)
            {
                Clusters = Algorithm.InitializeClusters(documenttext);
-               while (Clusters.Count != 1)
-                   Clusters = Algorithm.Cluster(Clusters);
+                   Clusters = Algorithm.Cluster(Clusters, 25);
 
                Paragraph paragraph2 = new Paragraph();
                for (int i = 0; i < Clusters.First().Contents.Count; i++)
                    paragraph2.Inlines.Add(Clusters.First().Contents[i] + '\n');
                FlowDocument document2 = new FlowDocument(paragraph2);
                ClusteredFlowDoc.Document = document2;
+
+               int b;
+
+               Clusters = Algorithm.Kmeans(Clusters);
+               int z;
            }
+              
+              
+
            else
            {
                MessageBox.Show("Wrong number inserted");

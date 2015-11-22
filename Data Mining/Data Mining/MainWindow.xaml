@@ -22,7 +22,7 @@
                    Text="Add Page" />
                 </StackPanel>
             </Button>
-            <TextBox Text="Enter Max Distance" Name="MaxDistanceTextBox" Background="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Foreground}">
+            <TextBox Text="1" Name="MinDistanceTextBox" Background="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Foreground}">
             </TextBox>
             <Button Name="Start" Click="Start_Click" IsEnabled="False">
                 <StackPanel Orientation="Horizontal">
