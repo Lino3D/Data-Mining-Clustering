@@ -25,6 +25,8 @@ namespace Data_Mining
     public partial class MainWindow : MetroWindow
     {
         List<Cluster> Clusters;
+        string documenttext;
+        int MaxDistance;
         public MainWindow()
         {
       //      MessageBox.Show(Algorithm.CalculateLevenshtein("Sam", "Samantha").ToString());
@@ -47,23 +49,37 @@ namespace Data_Mining
                 string filename = dlg.FileName;
                 Paragraph paragraph = new Paragraph();
                 paragraph.Inlines.Add(System.IO.File.ReadAllText(filename));
-                string documenttext = System.IO.File.ReadAllText(filename);
+                documenttext = System.IO.File.ReadAllText(filename);
                 FlowDocument document = new FlowDocument(paragraph);
                 FlowDocReader.Document = document;
+                Start.IsEnabled = true;
 
-
-                Clusters = Algorithm.InitializeClusters(documenttext);
-                while(Clusters.Count != 1)
-                    Clusters = Algorithm.Cluster(Clusters);
-               
-                Paragraph paragraph2 = new Paragraph();
-                for( int i = 0; i < Clusters.First().Contents.Count; i++)
-                paragraph2.Inlines.Add(Clusters.First().Contents[i] + '\n');
-                FlowDocument document2 = new FlowDocument(paragraph2);
-                ClusteredFlowDoc.Document = document2;
-               
-           
             } 
+        }
+
+        private void Start_Click(object sender, RoutedEventArgs e)
+        {
+            int MaxDistance;
+       
+           bool result = Int32.TryParse(MaxDistanceTextBox.Text, out MaxDistance);
+
+           if (result)
+           {
+               Clusters = Algorithm.InitializeClusters(documenttext);
+               while (Clusters.Count != 1)
+                   Clusters = Algorithm.Cluster(Clusters);
+
+               Paragraph paragraph2 = new Paragraph();
+               for (int i = 0; i < Clusters.First().Contents.Count; i++)
+                   paragraph2.Inlines.Add(Clusters.First().Contents[i] + '\n');
+               FlowDocument document2 = new FlowDocument(paragraph2);
+               ClusteredFlowDoc.Document = document2;
+           }
+           else
+           {
+               MessageBox.Show("Wrong number inserted");
+           }
+
         }
     }
 }

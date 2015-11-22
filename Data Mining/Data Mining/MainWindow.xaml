@@ -1,7 +1,8 @@
 ﻿<Controls:MetroWindow  x:Class="Data_Mining.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Data Mining" Height="350" Width="525"
+        Title="Data Mining" Height="371.111" Width="625"
+                       MinWidth="400"
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro" 
                        ResizeMode="CanResizeWithGrip"
         >
@@ -21,6 +22,26 @@
                    Text="Add Page" />
                 </StackPanel>
             </Button>
+            <TextBox Text="Enter Max Distance" Name="MaxDistanceTextBox" Background="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Foreground}">
+            </TextBox>
+            <Button Name="Start" Click="Start_Click" IsEnabled="False">
+                <StackPanel Orientation="Horizontal">
+                    <Rectangle Width="20" Height="20"
+                   Fill="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Foreground}">
+                        <Rectangle.OpacityMask>
+                            <VisualBrush Stretch="Fill"
+                         Visual="{StaticResource appbar_control_play}" />
+                        </Rectangle.OpacityMask>
+                    </Rectangle>
+                    <TextBlock Margin="4 0 0 0"
+                   VerticalAlignment="Center"
+                   Text="Start Computation" />
+                </StackPanel>
+            </Button>
+            
+         
+
+
         </Controls:WindowCommands>
     </Controls:MetroWindow.RightWindowCommands>
     <Controls:MetroWindow.LeftWindowCommands>
