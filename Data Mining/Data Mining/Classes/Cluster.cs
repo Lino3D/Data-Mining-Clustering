@@ -11,10 +11,10 @@ namespace Data_Mining.Classes
         public int ID { get; set; }
         private int size
         { get; set; }
-        public List<string> Contents;
+        public double mean {get; set;}
+        public string Centroid{get; set;}
         public int[] Vector;
-        public double mean;
-        public string Centroid;
+        public List<string> Contents;
 
       //hello
         public Cluster(int id, int p, List<string> tmp)

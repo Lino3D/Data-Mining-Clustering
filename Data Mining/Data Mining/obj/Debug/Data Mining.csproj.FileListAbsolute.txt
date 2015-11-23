@@ -16,7 +16,6 @@ C:\Users\Lino\Desktop\Data Mining\Data Mining\Data Mining\obj\Debug\Data_Mining.
 C:\Users\Lino\Desktop\Data Mining\Data Mining\Data Mining\obj\Debug\Data Mining.csproj.GenerateResource.Cache
 C:\Users\Lino\Desktop\Data Mining\Data Mining\Data Mining\obj\Debug\Data Mining.exe
 C:\Users\Lino\Desktop\Data Mining\Data Mining\Data Mining\obj\Debug\Data Mining.pdb
-C:\Users\Lino\Desktop\Data Mining\Data Mining\Data Mining\obj\Debug\Data Mining.csprojResolveAssemblyReference.cache
 C:\Users\Michał\Desktop\DMProject\Data Mining\Data Mining\bin\Debug\Data Mining.exe.config
 C:\Users\Michał\Desktop\DMProject\Data Mining\Data Mining\obj\Debug\Data Mining.exe
 C:\Users\Michał\Desktop\DMProject\Data Mining\Data Mining\obj\Debug\Data Mining.pdb

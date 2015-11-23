@@ -71,13 +71,13 @@ namespace Data_Mining
                Paragraph paragraph2 = new Paragraph();
                for (int i = 0; i < Clusters.First().Contents.Count; i++)
                    paragraph2.Inlines.Add(Clusters.First().Contents[i] + '\n');
-               FlowDocument document2 = new FlowDocument(paragraph2);
-               ClusteredFlowDoc.Document = document2;
+              // FlowDocument document2 = new FlowDocument(paragraph2);
+             //  ClusteredFlowDoc.Document = document2;
 
                int b;
-
+      
                Algorithm.KMeans2(Clusters);
-               int z;
+               dataGrid.ItemsSource = Clusters;
            }
               
               

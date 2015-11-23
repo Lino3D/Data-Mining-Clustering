@@ -75,6 +75,7 @@
                     <FlowDocumentReader Name="FlowDocReader" Background="LightBlue" ViewingMode="Scroll" IsFindEnabled="False" 
                                          IsTwoPageViewEnabled="False" 
                                 Canvas.Top="50" Canvas.Left="5"/>
+
                 </Grid>
             </TabItem>
             <TabItem Header="Clustered">
@@ -82,10 +83,10 @@
                     <Grid.RowDefinitions>
 
                     </Grid.RowDefinitions>
-
-                    <FlowDocumentReader Name="ClusteredFlowDoc" Background="LightBlue" ViewingMode="Scroll" IsFindEnabled="False" 
-                                         IsTwoPageViewEnabled="False" 
-                                Canvas.Top="50" Canvas.Left="5"/>
+                    <DataGrid x:Name="dataGrid" AutoGenerateColumns="True" Grid.Row="1" Grid.RowSpan="1" >
+                      
+                    </DataGrid>
+                 
                 </Grid>
             </TabItem>
         </TabControl>
