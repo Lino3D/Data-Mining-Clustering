@@ -99,6 +99,63 @@ namespace Data_Mining.Functions
            return Clusters;
        }
 
+       public static List<Cluster> KMeans2(List<Cluster> Clusters)
+       {
+           //Variable is a centroid for each Cluster in Clusters
+           int[] centroid = new int[Clusters.Count()];
+           int sum = 0;
+           int value;
+           foreach( var item in Clusters)
+           {
+               item.CalculateVectorSpace();
+               sum = 0;
+               for( int i = 0 ; i < item.Vector.Count(); i++)
+               {
+                   foreach (var tmp in item.Vector)
+                       sum += tmp;
+                   item.mean = sum / item.Vector.Count();
+               }
+
+               //Find the word close to the mean value
+               value = (int) item.mean;
+               int original = value;
+               bool lastadded = true;
+               int addition = 1;
+               while (true)
+               {
+                   int tmp2 = -1;
+                
+                   for (int i = 0; i < item.Vector.Count(); i++)
+                   {
+                       if (item.Vector[i] == value)
+                       {
+                           tmp2 = i;
+                           break;
+                       }
+                   }
+                   if (tmp2 != -1)
+                   {
+                       item.Centroid = item.Contents.ElementAt(tmp2);
+                       break;
+                   }
+                   if (lastadded)
+                   {
+                       value = original + addition;
+                       lastadded = false;
+                   }
+                   else
+                   {
+                       value = original - addition;
+                       lastadded = true;
+                       addition++;
+                   }
+               }
+           }
+
+
+           return Clusters;
+       }
+
 
        public static int CalculateLevenshtein(string a, string b)
         {

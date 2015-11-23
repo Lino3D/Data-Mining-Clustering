@@ -76,7 +76,7 @@ namespace Data_Mining
 
                int b;
 
-               Clusters = Algorithm.Kmeans(Clusters);
+               Algorithm.KMeans2(Clusters);
                int z;
            }
               
