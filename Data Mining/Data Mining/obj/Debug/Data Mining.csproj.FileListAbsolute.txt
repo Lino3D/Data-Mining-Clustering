@@ -35,3 +35,4 @@ C:\Users\Michał\Desktop\DMProject\Data Mining\Data Mining\obj\Debug\Data Mining
 C:\Users\Michał\Desktop\DMProject\Data Mining\Data Mining\obj\Debug\Data Mining.g.resources
 C:\Users\Michał\Desktop\DMProject\Data Mining\Data Mining\obj\Debug\Data_Mining.Properties.Resources.resources
 C:\Users\Michał\Desktop\DMProject\Data Mining\Data Mining\obj\Debug\Data Mining.csproj.GenerateResource.Cache
+C:\Users\Lino\Desktop\Data Mining\Data Mining\Data Mining\obj\Debug\Data Mining.csprojResolveAssemblyReference.cache

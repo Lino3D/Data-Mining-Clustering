@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace Data_Mining.Functions
@@ -116,40 +117,53 @@ namespace Data_Mining.Functions
                    item.mean = sum / item.Vector.Count();
                }
 
-               //Find the word close to the mean value
+               //Find the word close to the mean value [centroid]
                value = (int) item.mean;
                int original = value;
                bool lastadded = true;
                int addition = 1;
-               while (true)
+           
+               for (int i = 0; i < Clusters.Count; i++ )
                {
-                   int tmp2 = -1;
-                
-                   for (int i = 0; i < item.Vector.Count(); i++)
+                   for(int j=0; j<Clusters[i].Contents.Count(); j++)
                    {
-                       if (item.Vector[i] == value)
+                       string tmp = Clusters[i].Contents[j];
+                       tmp = Regex.Replace(tmp, "[^0-9a-zA-Z]+", "");
+                       Clusters[i].Contents[j] = tmp;
+
+                   }
+
+               }
+
+                   while (true)
+                   {
+                       int tmp2 = -1;
+
+                       for (int i = 0; i < item.Vector.Count(); i++)
                        {
-                           tmp2 = i;
+                           if (item.Vector[i] == value)
+                           {
+                               tmp2 = i;
+                               break;
+                           }
+                       }
+                       if (tmp2 != -1)
+                       {
+                           item.Centroid = item.Contents.ElementAt(tmp2);
                            break;
                        }
+                       if (lastadded)
+                       {
+                           value = original + addition;
+                           lastadded = false;
+                       }
+                       else
+                       {
+                           value = original - addition;
+                           lastadded = true;
+                           addition++;
+                       }
                    }
-                   if (tmp2 != -1)
-                   {
-                       item.Centroid = item.Contents.ElementAt(tmp2);
-                       break;
-                   }
-                   if (lastadded)
-                   {
-                       value = original + addition;
-                       lastadded = false;
-                   }
-                   else
-                   {
-                       value = original - addition;
-                       lastadded = true;
-                       addition++;
-                   }
-               }
            }
 
 
