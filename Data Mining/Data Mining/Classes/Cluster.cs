@@ -14,7 +14,7 @@ namespace Data_Mining.Classes
         public double mean {get; set;}
         public string Centroid{get; set;}
         public int[] Vector;
-        public List<string> Contents;
+        public List<string> Contents = new List<string>();
 
       //hello
         public Cluster(int id, int p, List<string> tmp)
@@ -23,6 +23,18 @@ namespace Data_Mining.Classes
             this.ID = id;
             this.size = p;
             this.Contents = tmp;
+        }
+
+        public Cluster(int id,string tmp)
+        {
+            // TODO: Complete member initialization
+            this.ID = id;
+            this.Contents.Add(tmp);
+        }
+
+        public void AddToCluster(string tmp)
+        {
+            Contents.Add(tmp);
         }
         public string GetContents(int i)
         {

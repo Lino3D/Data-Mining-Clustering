@@ -77,47 +77,114 @@ namespace Data_Mining.Functions
            return c1;
        }
 
-       //cholera to jest zle nie chce mi sie
-       public static List<Cluster> Kmeans (List<Cluster> Clusters)
-       {
-           Random r = new Random();
-           foreach(Cluster C in Clusters)
-           {
-               
-               int index = r.Next(1, C.GetSize());
-               string seed = C.Contents[index];
-                int mean=0;
-                string centroid;
-               for(int i=0; i< C.Contents.Count-1; i++)
-               {
-                   mean += CalculateLevenshtein(C.Contents[i], C.Contents[i + 1]);
-               }
-               mean = (mean / C.GetSize());
 
-                        int a = 0;
-
-           }
-           return Clusters;
-       }
-
-       public static List<Cluster> KMeans2(List<Cluster> Clusters)
+       public static List<Cluster> KMeans(List<Cluster> Clusters)
        {
            //Variable is a centroid for each Cluster in Clusters
            int[] centroid = new int[Clusters.Count()];
+
+           List<Cluster> NewClusters = new List<Cluster>();
+           List<string> WordContainer = new List<string>();
+
+           FindCentroid(Clusters);
+           GiveNewIds(Clusters);
+           bool IsTheSame = false;
+           int counter = 0;
+
+
+
+           while (!IsTheSame)
+           {
+               counter = 0;
+               foreach (var cluster in Clusters)
+                   if (cluster.Centroid == cluster.Contents[0])
+                   {
+                   
+                       counter++;
+                   }
+               if( counter == Clusters.Count())
+                   IsTheSame = true;
+               if (!IsTheSame)
+               {
+                   NewClusters = new List<Cluster>();
+                   WordContainer = new List<string>();
+                   int id = 0;
+                   foreach (var cluster in Clusters)
+                   {
+                       Cluster c = new Cluster(id, cluster.Centroid);
+                       id++;
+                       NewClusters.Add(c);
+                       for (int i = 0; i < cluster.Contents.Count(); i++)
+                           if (cluster.Contents[i] != cluster.Centroid)
+                               WordContainer.Add(cluster.Contents[i]);
+                   }
+
+                   CalculateClosests(NewClusters, WordContainer);
+                   Clusters.Clear();
+                   Clusters = NewClusters;
+                   FindCentroid(Clusters);
+               }
+
+           }
+
+
+           return Clusters;
+       }
+
+       public static void CalculateClosests(List<Cluster> Clusters, List<string> Words)
+       {
+           while (Words.Count() != 0)
+           {
+               foreach (var c in Clusters)
+               {
+                   if (Words.Count() != 0)
+                   {
+                       int MinLen = int.MaxValue;
+                       int index = 0;
+                       for (int i = 0; i < Words.Count(); i++)
+                       {
+                           if (MinLen > CalculateLevenshtein(c.Contents[0], Words[i]))
+                           {
+                               MinLen = CalculateLevenshtein(c.Contents[0], Words[i]);
+                               index = i;
+                           }
+
+                       }
+
+                       c.AddToCluster(Words[index]);
+                       Words.RemoveAt(index);
+                   }
+               }
+           }
+       }
+
+
+       public static void GiveNewIds(List<Cluster>Clusters)
+       {
+           int i = 1;
+           foreach(Cluster c in Clusters)
+           {
+               c.SetId(i);
+               i++;
+           }
+       }
+
+       public static void FindCentroid(List<Cluster> Clusters)
+       {
            int sum = 0;
            int value;
-           foreach( var item in Clusters)
+           foreach (var item in Clusters)
            {
                item.CalculateVectorSpace();
                sum = 0;
-               for( int i = 0 ; i < item.Vector.Count(); i++)
+               for (int i = 0; i < item.Vector.Count(); i++)
                {
                    sum += item.Vector[i];
                    item.mean = sum / item.Vector.Count();
                }
 
                //Find the word close to the mean value [centroid]
-               value = (int) item.mean;
+               value = (int)item.mean;
                int original = value;
                bool lastadded = true;
                int addition = 1;
@@ -133,56 +200,35 @@ namespace Data_Mining.Functions
                    }
 
                }
-                   while (true)
-                   {
-                       int tmp2 = -1;
+               while (true)
+               {
+                   int tmp2 = -1;
 
-                       for (int i = 0; i < item.Vector.Count(); i++)
+                   for (int i = 0; i < item.Vector.Count(); i++)
+                   {
+                       if (item.Vector[i] == value)
                        {
-                           if (item.Vector[i] == value)
-                           {
-                               tmp2 = i;
-                               break;
-                           }
-                       }
-                       if (tmp2 != -1)
-                       {
-                           item.Centroid = item.Contents.ElementAt(tmp2);
+                           tmp2 = i;
                            break;
                        }
-                       if (lastadded)
-                       {
-                           value = original + addition;
-                           lastadded = false;
-                       }
-                       else
-                       {
-                           value = original - addition;
-                           lastadded = true;
-                           addition++;
-                       }
                    }
-           }
-           GiveNewIds(Clusters);
-
-
-
-
-
-
-
-
-
-
-           return Clusters;
-       }
-       public static void GiveNewIds(List<Cluster>Clusters)
-       {
-           int i = 1;
-           foreach(Cluster c in Clusters)
-           {
-               c.SetId(i);
-               i++;
+                   if (tmp2 != -1)
+                   {
+                       item.Centroid = item.Contents.ElementAt(tmp2);
+                       break;
+                   }
+                   if (lastadded)
+                   {
+                       value = original + addition;
+                       lastadded = false;
+                   }
+                   else
+                   {
+                       value = original - addition;
+                       lastadded = true;
+                       addition++;
+                   }
+               }
            }
        }
 
