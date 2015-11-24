@@ -112,8 +112,7 @@ namespace Data_Mining.Functions
                sum = 0;
                for( int i = 0 ; i < item.Vector.Count(); i++)
                {
-                   foreach (var tmp in item.Vector)
-                       sum += tmp;
+                   sum += item.Vector[i];
                    item.mean = sum / item.Vector.Count();
                }
 
@@ -122,10 +121,10 @@ namespace Data_Mining.Functions
                int original = value;
                bool lastadded = true;
                int addition = 1;
-           
-               for (int i = 0; i < Clusters.Count; i++ )
+
+               for (int i = 0; i < Clusters.Count; i++)
                {
-                   for(int j=0; j<Clusters[i].Contents.Count(); j++)
+                   for (int j = 0; j < Clusters[i].Contents.Count(); j++)
                    {
                        string tmp = Clusters[i].Contents[j];
                        tmp = Regex.Replace(tmp, "[^0-9a-zA-Z]+", "");
@@ -134,7 +133,6 @@ namespace Data_Mining.Functions
                    }
 
                }
-
                    while (true)
                    {
                        int tmp2 = -1;
@@ -165,11 +163,28 @@ namespace Data_Mining.Functions
                        }
                    }
            }
+           GiveNewIds(Clusters);
+
+
+
+
+
+
+
+
 
 
            return Clusters;
        }
-
+       public static void GiveNewIds(List<Cluster>Clusters)
+       {
+           int i = 1;
+           foreach(Cluster c in Clusters)
+           {
+               c.SetId(i);
+               i++;
+           }
+       }
 
        public static int CalculateLevenshtein(string a, string b)
         {

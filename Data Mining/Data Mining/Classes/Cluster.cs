@@ -31,6 +31,10 @@ namespace Data_Mining.Classes
         }
       public int GetSize()
         { return size; }
+     public void SetId(int _id)
+      {
+          this.ID = _id;
+      }
 
       public void CalculateVectorSpace()
       {
@@ -58,6 +62,7 @@ namespace Data_Mining.Classes
           Contents.Clear();
           Contents = NewList;
       }
+   
 
     }
      
