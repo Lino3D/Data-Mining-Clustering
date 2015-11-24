@@ -16,6 +16,7 @@ using MahApps.Metro.Controls;
 using System.IO;
 using Data_Mining.Classes;
 using Data_Mining.Functions;
+using System.Diagnostics;
 
 namespace Data_Mining
 {
@@ -27,13 +28,18 @@ namespace Data_Mining
         List<Cluster> Clusters;
         string documenttext;
         int MaxDistance;
+
+        long milisecs = 0;
+
         public MainWindow()
         {
       //      MessageBox.Show(Algorithm.CalculateLevenshtein("Sam", "Samantha").ToString());
             InitializeComponent();
+
+
         }
 
-        private void DocumentButton_Click(object sender, RoutedEventArgs e)
+        private void AddDocument_Click(object sender, RoutedEventArgs e)
         {
      
             Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
@@ -56,6 +62,7 @@ namespace Data_Mining
 
             } 
         }
+    
 
         private void Start_Click(object sender, RoutedEventArgs e)
         {
@@ -65,20 +72,20 @@ namespace Data_Mining
 
            if (result)
            {
+
+
+               var watch = Stopwatch.StartNew();
                Clusters = Algorithm.InitializeClusters(documenttext);
                    Clusters = Algorithm.Cluster(Clusters, 25);
-
-               Paragraph paragraph2 = new Paragraph();
-               for (int i = 0; i < Clusters.First().Contents.Count; i++)
-                   paragraph2.Inlines.Add(Clusters.First().Contents[i] + '\n');
-              // FlowDocument document2 = new FlowDocument(paragraph2);
-             //  ClusteredFlowDoc.Document = document2;
-
-               int b;
-      
+               
                Algorithm.KMeans2(Clusters);
+               watch.Stop();
+               milisecs = watch.ElapsedMilliseconds;
+               Time.Content = milisecs;
                dataGrid.ItemsSource = Clusters;
-           }
+
+               int b; 
+          }
               
               
 
