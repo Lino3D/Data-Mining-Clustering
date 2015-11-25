@@ -76,14 +76,12 @@ namespace Data_Mining
 
                var watch = Stopwatch.StartNew();
                Clusters = Algorithm.InitializeClusters(documenttext);
-               Clusters = Algorithm.Cluster(Clusters, 25); 
+               Clusters = Algorithm.Cluster(Clusters, Int32.Parse( MinDistanceTextBox.Text)); 
                Clusters = Algorithm.KMeans(Clusters);
                watch.Stop();
                milisecs = watch.ElapsedMilliseconds;
                Time.Content = milisecs;
                dataGrid.ItemsSource = Clusters;
-
-               int b; 
           }
               
               
@@ -93,6 +91,57 @@ namespace Data_Mining
                MessageBox.Show("Wrong number inserted");
            }
 
+        }
+
+        private void SaveButton_Click(object sender, RoutedEventArgs e)
+        {
+
+            if( Clusters != null)
+                if (Clusters.Count() != 0)
+                {
+                    string filename = "";
+                    Microsoft.Win32.SaveFileDialog dlg = new Microsoft.Win32.SaveFileDialog();
+                    dlg.FileName = "Save File"; // Default file name
+                    dlg.DefaultExt = ".txt"; // Default file extension
+                    dlg.Filter = "Text documents (.txt)|*.txt"; // Filter files by extension
+
+                    // Show save file dialog box
+                    Nullable<bool> result = dlg.ShowDialog();
+
+                    // Process save file dialog box results
+                    if (result == true)
+                    {
+                        // Save document
+                        filename = dlg.FileName;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Something went wrong.");
+                        return;
+                    }
+
+
+                    System.IO.StreamWriter file = new System.IO.StreamWriter(filename);
+
+                    string text = "";
+                    foreach (var c in Clusters)
+                    {
+                        file.WriteLine(" ");
+                        file.WriteLine("Centroid: " + c.Contents[0]);
+                        for (int i = 0; i < c.Contents.Count(); i++)
+                            if (i != c.Contents.Count() - 1)
+                                file.Write(c.Contents[i] + ", ");
+                            else
+                                file.Write(c.Contents[i]);
+
+                    }
+                    file.Close();
+
+                }
+                else
+                {
+                    MessageBox.Show("Something went wrong.");
+                }
         }
     }
 }
