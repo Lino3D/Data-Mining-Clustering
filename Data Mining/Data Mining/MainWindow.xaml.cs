@@ -76,9 +76,8 @@ namespace Data_Mining
 
                var watch = Stopwatch.StartNew();
                Clusters = Algorithm.InitializeClusters(documenttext);
-                   Clusters = Algorithm.Cluster(Clusters, 25);
-               
-               Algorithm.KMeans(Clusters);
+               Clusters = Algorithm.Cluster(Clusters, 25); 
+               Clusters = Algorithm.KMeans(Clusters);
                watch.Stop();
                milisecs = watch.ElapsedMilliseconds;
                Time.Content = milisecs;
